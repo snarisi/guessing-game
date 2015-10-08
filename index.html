@@ -14,10 +14,8 @@
     </div>
     
     <div class="guess-form">
-      <form>
-        <input type="text" name="guess" placeholder="Enter a number from 1-100"><br>
-        <button class="btn btn-primary">Make Your Guess</button>
-      </form>
+        <input type="text" name="guess" id="input" placeholder="Enter a number from 1-100"><br>
+        <button class="btn btn-primary" id="submit-guess">Make Your Guess</button>
 
       <div class="feedback center-block">
         <p>Your guess is <span class="red bold">hot</span>/<span class="blue bold">cold</span>.</p>
@@ -26,9 +24,12 @@
     </div>
     
     <div class="footer">
-      <p>You have <span class="bold">5</span> guesses left</p>
+      <p id="count">You have <span class="bold">5</span> guesses left</p>
       <button class="btn btn-primary">Start Over</button>
     </div>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="app.js"></script>
     
   </body>
 
