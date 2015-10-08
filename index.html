@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guessing Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  
+  <body>
+    <div class="header">
+      <h1>Guess the Number!</h1>
+    </div>
+    
+    <div class="guess-form">
+      <form>
+        <input type="text" name="guess" placeholder="Enter a number from 1-100"><br>
+        <button class="btn btn-primary">Make Your Guess</button>
+      </form>
+
+      <div class="feedback center-block">
+        <p>Your guess is <span class="red bold">hot</span>/<span class="blue bold">cold</span>.</p>
+        <p>Guess <span class="bold">higher</span>/<span class="bold">lower</span>.</p>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>You have <span class="bold">5</span> guesses left</p>
+      <button class="btn btn-primary">Start Over</button>
+    </div>
+    
+  </body>
+
+</html>
