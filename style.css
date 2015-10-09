@@ -71,7 +71,7 @@ input:-moz-placeholder {
   vertical-align: middle;
 }
 
-.feedback {
+.feedback, .game-end {
   display: none;
   margin-top: 20px;
   margin-bottom: 30px;
@@ -79,5 +79,12 @@ input:-moz-placeholder {
   width: 250px;
   background-color: #ECEFF1;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  font-family: "Slabo 27px";
+}
+
+.faded {
+  opacity: 0.4;
+}
+
+.not-faded {
+  opacity: 1;
 }
