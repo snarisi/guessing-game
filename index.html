@@ -9,23 +9,29 @@
   </head>
   
   <body>
-    <div class="header">
+    <div class="header fade-on-end">
       <h1>Guess the Number!</h1>
     </div>
     
     <div class="guess-form">
+      <div class="fade-on-end">
         <input type="text" name="guess" id="input" placeholder="Enter a number from 1-100"><br>
         <button class="btn btn-primary" id="submit-guess">Make Your Guess</button>
+      </div>
 
       <div class="feedback center-block">
         <p>Your guess is <span class="red bold">hot</span>/<span class="blue bold">cold</span>.</p>
         <p>Guess <span class="bold">higher</span>/<span class="bold">lower</span>.</p>
       </div>
+      
+      <div class="game-end center-block">
+        <p class="bold">You <span id="win-or-lose">win!</span></p>
+        <button class="btn btn-primary" id="play-again">Play Again</button>
+      </div>
     </div>
     
-    <div class="footer">
+    <div class="footer fade-on-end">
       <p id="count">You have <span class="bold">5</span> guesses left</p>
-      <button class="btn btn-primary">Start Over</button>
     </div>
     
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
