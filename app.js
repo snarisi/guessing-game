@@ -1,10 +1,11 @@
 $(document).ready(function () {
   
   //initialize came by creating a number and setting the count to 5
-  var number = Math.floor(Math.random()* 100 + 1),
-    count = 5,
-    prevGuesses = [];
-  console.log(number);
+  var number,
+    count,
+    prevGuesses;
+  
+  initialize();
   
   //when the user submits a guess
   $('#submit-guess').on('click', function () {
@@ -69,12 +70,30 @@ $(document).ready(function () {
             } else {
               $('#count').html("You have <span class='bold'>" + count + "</span> guesses left");   
             }
+            
+            //update guess history
+            $('#guess-history').append('<li>' + guess + ' (' + temperature + ')</li>');
           }
         }
       }
    
     }
   });
+  
+  //initialize game
+  function initialize() {
+    number = Math.floor(Math.random() * 100 + 1);
+    count = 5;
+    prevGuesses = [];
+    console.log(number);
+    $('.game-end').hide();
+    $('.feedback').hide();
+    $('#count').html("You have <span class='bold'>" + count + "</span> guesses left");
+    document.getElementById('input').value = "";
+    $('#guess-history').hide();
+    $('#guess-history').empty();
+    $('.fade-on-end').removeClass('faded');
+  }
   
   //sequence when game ends
   function gameEnd(outcome) {
@@ -99,19 +118,16 @@ $(document).ready(function () {
     if (event.which === 13) {
       $('#submit-guess').trigger('click');
     }
-  })
+  });
+  
+  //toggle guess history
+  $('#history-toggle').on('click', function () {
+    $('#guess-history').toggle();
+  });
   
   //play again
   $('#play-again').on('click', function () {
-    number = Math.floor(Math.random()* 100 + 1),
-    count = 5;
-    console.log(number);
-    $('.game-end').hide();
-    $('.feedback').hide();
-    $('#count').html("You have <span class='bold'>" + count + "</span> guesses left");
-    document.getElementById('input').value = "";
-    $('.fade-on-end').removeClass('faded');
-  });
-  
+    initialize();
+  });  
 
 });

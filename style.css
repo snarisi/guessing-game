@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 body {
   text-align: center;
   min-width: 250px;
@@ -69,6 +73,20 @@ button {
 input:-moz-placeholder { 
   font-size: 14px;
   vertical-align: middle;
+}
+
+#guess-history {
+  display: none;
+  width: 125px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+#history-toggle {
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
 }
 
 .feedback, .game-end {
