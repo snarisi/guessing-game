@@ -30,9 +30,6 @@ $(document).ready(function () {
           $('.feedback').show();
         } else {
           
-          //add guess to history
-          prevGuesses.push(guess);
-          
           //winning sequence
           if (guess === number) {
             gameEnd('win!');
@@ -43,23 +40,37 @@ $(document).ready(function () {
 
           //regular guessing sequence
           } else {
+            console.log(prevGuesses);
             if (guess > number) {
               direction = "<span class='bold'>lower</span>";
             } else {
               direction = "<span class='bold'>higher</span>";
             }
-            if (distance <= 10) {
-              temperature = "<span class='red bold'>hot</span>";
-            } else if (distance <= 25) {
-              temperature = "<span class='red bold'>warm</span>";
-            } else if (distance <= 50) {
-              temperature = "<span class='blue bold'>cool</span>";
-            } else if (distance <= 75) {
-              temperature = "<span class='blue bold'>cold</span>";
+            if (prevGuesses.length === 0) {
+              if (distance <= 10) {
+                temperature = "<span class='red bold'>hot</span>";
+              } else if (distance <= 25) {
+                temperature = "<span class='red bold'>warm</span>";
+              } else if (distance <= 50) {
+                temperature = "<span class='blue bold'>cool</span>";
+              } else if (distance <= 75) {
+                temperature = "<span class='blue bold'>cold</span>";
+              } else {
+                temperature = "<span class='blue bold'>ice cold</span>";
+              }
+              $('.feedback').html("<p>Your guess is " + temperature + ".</p><p>Guess " +  direction + ".</p");              
             } else {
-              temperature = "<span class='blue bold'>ice cold</span>";
+              if (distance < Math.abs(number - prevGuesses[prevGuesses.length - 1])) {
+                if (distance < 10) {
+                  temperature = "<span class='red bold'>hot</span>";
+                } else {
+                  temperature = "<span class='red bold'>warmer</span>";
+                }
+              } else {
+                temperature= "<span class='blue bold'>colder</span>";
+              }
+              $('.feedback').html("<p>Getting " + temperature + ".</p><p>Guess " + direction + ".</p>");
             }
-            $('.feedback').html("<p>Your guess is " + temperature + ".</p><p>Guess " +  direction + ".</p");
 
             //display feedback
             $('.feedback').show();
@@ -71,6 +82,9 @@ $(document).ready(function () {
               $('#count').html("You have <span class='bold'>" + count + "</span> guesses left");   
             }
             
+            //add guess to history
+            prevGuesses.push(guess);
+
             //update guess history
             $('#guess-history').append('<li>' + guess + ' (' + temperature + ')</li>');
           }
