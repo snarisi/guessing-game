@@ -37,10 +37,10 @@ $(document).ready(function () {
           //losing sequence  
           } else if (count === 0) {
             gameEnd('lose :(');
+            $('#count').html("You have <span class='bold'>" + count + "</span> guesses left");
 
           //regular guessing sequence
           } else {
-            console.log(prevGuesses);
             if (guess > number) {
               direction = "<span class='bold'>lower</span>";
             } else {
@@ -99,8 +99,9 @@ $(document).ready(function () {
     number = Math.floor(Math.random() * 100 + 1);
     count = 5;
     prevGuesses = [];
-    console.log(number);
     $('.game-end').hide();
+    $('#end-message').hide();
+    $('#answer').hide();
     $('.feedback').hide();
     $('#count').html("You have <span class='bold'>" + count + "</span> guesses left");
     document.getElementById('input').value = "";
@@ -112,9 +113,13 @@ $(document).ready(function () {
   //sequence when game ends
   function gameEnd(outcome) {
     $('#win-or-lose').html(outcome);
+    $('#end-message').show();
     $('.feedback').hide();
     $('.game-end').show();
     $('.fade-on-end').addClass('faded');
+    if (outcome.search(/lose/) > -1) {
+      $('#answer').html("The answer was: <span class='bold'>" + number + "</span>").show();
+    }
   }
   
   //check if guess is an integer from 1-100
@@ -142,6 +147,14 @@ $(document).ready(function () {
   //play again
   $('#play-again').on('click', function () {
     initialize();
-  });  
+  });
+  
+  //get the answer
+  $('#hint').on('click', function () {
+    $('#answer').html("The answer was: <span class='bold'>" + number + "</span>").show();
+    $('.game-end').show();
+    $('.feedback').hide();
+    $('.fade-on-end').addClass('faded');
+  });
 
 });
