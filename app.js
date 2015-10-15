@@ -58,7 +58,7 @@ $(document).ready(function () {
               } else {
                 temperature = "<span class='blue bold'>ice cold</span>";
               }
-              $('.feedback').html("<p>Your guess is " + temperature + ".</p><p>Guess " +  direction + ".</p");              
+              $('.feedback').html("<p>Your guess is " + temperature + ".</p><p>Guess " +  direction + ".</p");
             } else {
               if (distance < Math.abs(number - prevGuesses[prevGuesses.length - 1])) {
                 if (distance < 10) {
@@ -79,7 +79,7 @@ $(document).ready(function () {
             if (count === 1) {
               $('#count').html("You have <span class='bold'>" + count + "</span> guess left");
             } else {
-              $('#count').html("You have <span class='bold'>" + count + "</span> guesses left");   
+              $('#count').html("You have <span class='bold'>" + count + "</span> guesses left");
             }
             
             //add guess to history
